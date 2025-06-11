@@ -22,9 +22,7 @@ jobs:
         run: pip install uv
 
       - name: Install dependencies
-        run: |
-          uv sync
-          pip install seaborn pandas
+        run: uv sync
 
       - name: Run Python script
         run: uv run python main.py
@@ -46,15 +44,8 @@ jobs:
         run: pip install uv
 
       - name: Install dependencies
-        run: |
-          uv sync
-          pip install seaborn pandas
-
-      - name: Install requirements
-        run: |
-          if [ -f requirements.txt ]; then
-            pip install -r requirements.txt
-          fi
+        run: uv sync
 
       - name: Run tests
         run: uv run pytest test_main.py -v
+        
