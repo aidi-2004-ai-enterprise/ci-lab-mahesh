@@ -50,8 +50,10 @@ jobs:
         run: pip install seaborn
 
       - name: Install requirements
-        run: pip install -r requirements.txt
-        if: exists('requirements.txt')
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
 
       - name: Run tests
         run: uv run pytest test_main.py -v
